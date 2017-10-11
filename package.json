@@ -4,7 +4,7 @@
   "description": "A react native view that allows you to drill down into objects",
   "main": "index.js",
   "scripts": {
-    "test": "",
+    "test": "npm run lint",
     "lint": "eslint . --ignore-path .gitignore --ext .js --ext .jsx",
     "fix-lint": "yarn lint -- --fix"
   },

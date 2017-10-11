@@ -4,7 +4,9 @@
   "description": "A react native view that allows you to drill down into objects",
   "main": "index.js",
   "scripts": {
-    "test": ""
+    "test": "",
+    "lint": "eslint . --ignore-path .gitignore --ext .js --ext .jsx",
+    "fix-lint": "yarn lint -- --fix"
   },
   "repository": {
     "type": "git",
@@ -29,5 +31,16 @@
   "dependencies": {
     "lodash": "^4.16.6",
     "prop-types": "^15.5.10"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-react-native": "^3.1.0",
+    "react": "^16.0.0",
+    "react-native": "^0.44.0"
   }
 }

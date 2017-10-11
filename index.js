@@ -50,7 +50,7 @@ export default class DrillableObjectView extends PureComponent {
   constructor(props) {
     super(props);
     const { autoExpand } = props;
-    console.log(autoExpand)
+    console.log(autoExpand);
     this.state = { isOpen: autoExpand };
   }
 
@@ -122,6 +122,7 @@ export default class DrillableObjectView extends PureComponent {
 
   render() {
     const { keyName, value, marginLeft } = this.props;
+
     if (_.isObject(value)) return this.renderObjectRow();
 
     return (

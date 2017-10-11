@@ -1,0 +1,33 @@
+{
+  "name": "react-native-drillable-object-view",
+  "version": "0.1.0",
+  "description": "A react native view that allows you to drill down into objects",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newtonry/react-native-drillable-object-view.git"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "object",
+    "drilldown"
+  ],
+  "author": "newtonry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/newtonry/react-native-drillable-object-view/issues"
+  },
+  "homepage": "https://github.com/newtonry/react-native-drillable-object-view#readme",
+  "peerDependencies": {
+    "react": "react@^16.0.0",
+    "react-native": "^0.44.0"
+  },
+  "dependencies": {
+    "lodash": "^4.16.6",
+    "prop-types": "^15.5.10"
+  }
+}

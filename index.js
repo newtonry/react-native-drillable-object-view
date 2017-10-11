@@ -10,24 +10,30 @@ import Colors from './colors';
 
 
 const styles = StyleSheet.create({
-  keyText: {
-    color: Colors.ALMOST_BLACK,
-  },
-  valueText: {
-    color: Colors.ALMOST_BLACK,
-  },
-  nullAnUndefined: {
-    color: colors.DARK_GREY,
-  },
-  string: {
-    color: colors.RED,
-  },
-  numberAndBoolean: {
+  booleanStyle: {
     color: Colors.BLUE,
+  },
+  keyStyle: {
+    color: Colors.ALMOST_BLACK,
+  },
+  nullStyle: {
+    color: Colors.DARK_GREY,
+  },
+  numberStyle: {
+    color: Colors.BLUE,
+  },
+  stringStyle: {
+    color: Colors.RED,
+  },
+  undefinedStyle: {
+    color: Colors.DARK_GREY,
+  },
+  valueStyle: {
+    color: Colors.ALMOST_BLACK,
   },
 });
 
-export default class DrillableObjectText extends PureComponent {
+export default class DrillableObjectView extends PureComponent {
   static propTypes = {
     autoExpand: PropTypes.bool,
     keyName: PropTypes.any,
@@ -38,32 +44,33 @@ export default class DrillableObjectText extends PureComponent {
   static defaultProps = {
     autoExpand: false,
     keyName: 'parent',
-    marginLeft: Metrics.baseMargin,
+    marginLeft: 8,
   };
 
   constructor(props) {
     super(props);
     const { autoExpand } = props;
+    console.log(autoExpand)
     this.state = { isOpen: autoExpand };
   }
 
   toggleOpen = () => { this.setState({ isOpen: !this.state.isOpen }); };
 
-  renderValueText = (value) => {
+  rendervalueStyle = (value) => {
     if (value === null) {
-      return <Text style={styles.nullAnUndefined}>{String(value)}</Text>;
+      return <Text style={styles.nullStyle}>{String(value)}</Text>;
     }
     switch (typeof (value)) {
       case 'string':
-        return <Text style={styles.string}>&quot;{value}&quot;</Text>;
+        return <Text style={styles.stringStyle}>&quot;{value}&quot;</Text>;
       case 'boolean':
-        return <Text style={styles.numberAndBoolean}>{String(value)}</Text>;
+        return <Text style={styles.booleanStyle}>{String(value)}</Text>;
       case 'number':
-        return <Text style={styles.numberAndBoolean}>{value}</Text>;
+        return <Text style={styles.numberStyle}>{value}</Text>;
       case 'undefined':
-        return <Text style={styles.nullAnUndefined}>{String(value)}</Text>;
+        return <Text style={styles.undefinedStyle}>{String(value)}</Text>;
       default:
-        return <Text style={styles.valueText}>{String(value)}</Text>;
+        return <Text style={styles.valueStyle}>{String(value)}</Text>;
     }
   };
 
@@ -72,8 +79,8 @@ export default class DrillableObjectText extends PureComponent {
     const emptyObjectText = _.isArray(value) ? '[]' : '{}';
     return (
       <Text style={{ marginLeft }}>
-        <Text style={styles.keyText}>{keyName}:</Text>
-        <Text style={styles.valueText}> {emptyObjectText}</Text>
+        <Text style={styles.keyStyle}>{keyName}:</Text>
+        <Text style={styles.valueStyle}> {emptyObjectText}</Text>
       </Text>
     );
   };
@@ -82,7 +89,7 @@ export default class DrillableObjectText extends PureComponent {
     const { keyName, marginLeft } = this.props;
     return (
       <TouchableOpacity style={{ marginLeft }} onPress={this.toggleOpen}>
-        <Text style={styles.keyText}>{keyName}: +</Text>
+        <Text style={styles.keyStyle}>{keyName}: +</Text>
       </TouchableOpacity>
     );
   };
@@ -94,10 +101,10 @@ export default class DrillableObjectText extends PureComponent {
     // if the value is an object, but is empty, we should just output it
     if (_.isObject(value) && _.isEmpty(value)) return this.renderEmptyObjectRow();
 
-    if (!isOpen) this.renderClosedObjectRow();
+    if (!isOpen) return this.renderClosedObjectRow();
 
     const subComponents = _.map(value, (subValue, subkeyName) => (
-      <DrillableObjectText
+      <DrillableObjectView
         {...this.props}
         keyName={subkeyName}
         value={subValue}
@@ -107,7 +114,7 @@ export default class DrillableObjectText extends PureComponent {
 
     return (
       <TouchableOpacity style={{ marginLeft }} onPress={this.toggleOpen}>
-        <Text style={styles.keyText}>{keyName}: -</Text>
+        <Text style={styles.keyStyle}>{keyName}: -</Text>
         {subComponents}
       </TouchableOpacity>
     );
@@ -119,8 +126,8 @@ export default class DrillableObjectText extends PureComponent {
 
     return (
       <Text style={{ marginLeft }}>
-        <Text style={styles.keyText}>{keyName}:</Text>
-        <Text style={styles.valueText}> {this.renderValueText(value)}</Text>
+        <Text style={styles.keyStyle}>{keyName}:</Text>
+        <Text style={styles.valueStyle}> {this.rendervalueStyle(value)}</Text>
       </Text>
     );
   }

@@ -4,10 +4,10 @@
   "description": "A react native view that allows you to drill down into objects",
   "main": "src/index.js",
   "scripts": {
-    "test": "npm run lint",
+    "test": "jest",
     "lint": "eslint . --ignore-path .gitignore --ext .js --ext .jsx",
     "fix-lint": "yarn lint -- --fix",
-    "prepush": "npm test"
+    "prepush": "npm run lint && npm test"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,9 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
+    "babel-jest": "^21.2.0",
+    "enzyme": "^3.1.0",
+    "enzyme-to-json": "^3.1.2",
     "eslint": "^4.8.0",
     "eslint-config-airbnb": "^16.0.0",
     "eslint-plugin-import": "^2.7.0",
@@ -42,7 +45,17 @@
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-react-native": "^3.1.0",
     "husky": "^0.14.3",
+    "jest": "^21.2.1",
     "react": "^16.0.0-alpha.12",
-    "react-native": "^0.44.0"
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.0.0-alpha.12",
+    "react-native": "^0.46.4",
+    "react-test-renderer": "^16.0.0-alpha.12"
+  },
+  "jest": {
+    "preset": "react-native",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

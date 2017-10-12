@@ -4,14 +4,16 @@
     "plugins": [
       "react-native"
     ],
-	
+    "env": {
+      "jest": true
+    },
     "rules": {
       "react/jsx-no-bind": "off",
       "react/no-string-refs": "off",
       "no-underscore-dangle": "off",
       "no-unused-vars": ["error", { "argsIgnorePattern": "(state|dispatch)" }],
       "new-cap": ["error", {"capIsNewExceptions": ["Immutable"]}],
-      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/Tests/**"]}],
+      "import/no-extraneous-dependencies": "off",
       "no-console": "off",
       "react/jsx-filename-extension": "off",
       "global-require": "off",

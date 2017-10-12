@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm run lint",
     "lint": "eslint . --ignore-path .gitignore --ext .js --ext .jsx",
-    "fix-lint": "yarn lint -- --fix"
+    "fix-lint": "yarn lint -- --fix",
+    "prepush": "npm test"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-react-native": "^3.1.0",
+    "husky": "^0.14.3",
     "react": "^16.0.0-alpha.12",
     "react-native": "^0.44.0"
   }

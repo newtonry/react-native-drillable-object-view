@@ -17,6 +17,12 @@ it('renders correctly with a left margin as a prop', () => {
   expect(drillableObjectView).toMatchSnapshot();
 });
 
+it('renders correctly with a autoExpandDepth as a prop', () => {
+  const drillableObjectView = renderer.create(<DrillableObjectView keyName="aKeyName" autoExpandDepth={5} />).toJSON();
+
+  expect(drillableObjectView).toMatchSnapshot();
+});
+
 it('renders correctly with an array value', () => {
   const drillableObjectView = renderer.create(<DrillableObjectView keyName="arrayKey" value={[1, 2, 3]} />).toJSON();
 

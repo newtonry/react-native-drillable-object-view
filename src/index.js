@@ -35,22 +35,23 @@ const styles = StyleSheet.create({
 
 export default class DrillableObjectView extends PureComponent {
   static propTypes = {
-    autoExpand: PropTypes.bool,
+    autoExpandDepth: PropTypes.number,
     keyName: PropTypes.any,
     marginLeft: PropTypes.number,
     value: PropTypes.any,
   };
 
   static defaultProps = {
-    autoExpand: false,
+    autoExpandDepth: 0,
     keyName: 'parent',
     marginLeft: 8,
   };
 
   constructor(props) {
     super(props);
-    const { autoExpand } = props;
-    this.state = { isOpen: autoExpand };
+    const { autoExpandDepth } = props;
+    // If there are still more layers to be auto-expanded, we should default to isOpen
+    this.state = { isOpen: autoExpandDepth > 0 };
   }
 
   toggleOpen = () => { this.setState({ isOpen: !this.state.isOpen }); };
@@ -95,16 +96,21 @@ export default class DrillableObjectView extends PureComponent {
 
   renderObjectRow = () => {
     const { isOpen } = this.state;
-    const { keyName, value, marginLeft } = this.props;
+    const {
+      autoExpandDepth, keyName, value, marginLeft,
+    } = this.props;
 
     // if the value is an object, but is empty, we should just output it
     if (_.isObject(value) && _.isEmpty(value)) return this.renderEmptyObjectRow();
 
     if (!isOpen) return this.renderClosedObjectRow();
 
+    const autoExpandDepthRemaining = autoExpandDepth - 1;
+
     const subComponents = _.map(value, (subValue, subkeyName) => (
       <DrillableObjectView
         {...this.props}
+        autoExpandDepth={autoExpandDepthRemaining}
         keyName={subkeyName}
         value={subValue}
         key={`${keyName}:${subkeyName}`}

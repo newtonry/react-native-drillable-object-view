@@ -1,5 +1,7 @@
 # react-native-drillable-object-view
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/newtonry/react-native-drillable-object-view.svg)](https://greenkeeper.io/)
+
 This component takes in an array or object and renders a view that you can drill down into, similar to what you can do in a Chrome debugger (see gif below).
 
 ![Example gif](https://i.imgur.com/XRoLP27.gif)

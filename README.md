@@ -1,5 +1,4 @@
-# react-native-drillable-object-view
-
+# react-native-drillable-object-view [![Build Status](https://travis-ci.org/newtonry/react-native-drillable-object-view.svg?branch=master)](https://travis-ci.org/newtonry/react-native-drillable-object-view)
 This component takes in an array or object and renders a view that you can drill down into, similar to what you can do in a Chrome debugger (see gif below).
 
 ![Example gif](https://i.imgur.com/XRoLP27.gif)

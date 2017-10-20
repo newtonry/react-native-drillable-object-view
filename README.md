@@ -1,4 +1,4 @@
-# react-native-drillable-object-view
+# react-native-drillable-object-view [![Build Status](https://travis-ci.org/newtonry/react-native-drillable-object-view.svg?branch=master)](https://travis-ci.org/newtonry/react-native-drillable-object-view)
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/newtonry/react-native-drillable-object-view.svg)](https://greenkeeper.io/)
 
